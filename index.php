@@ -1,5 +1,11 @@
 <?php
 include 'utils/connection.php';
+
+session_start();
+
+/*session is started if you don't write this line can't use $_Session  global variable*/
+//mysql -h localhost -u root -p
+$_SESSION["id_usuario"]=1;
 ?>
 
 <html lang="en">
@@ -24,8 +30,8 @@ include 'utils/connection.php';
 	Example
 
 </h1>
-
-
+<!--El id sera seteado al inicia sesion por medio de una variable de sesion -->
+<BUTTON onclick="location.href='http://localhost:8082/eshop/MyCart.php'">Carro de compras</BUTTON>
 
 
 <div class="modal fade" id="loader" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false" style="background-color: rgba(171,171,171, 0.5);">
@@ -42,9 +48,7 @@ include 'utils/connection.php';
      </div>
 </div>       
 
-<div id="response">Mi respuesta</div>
-
-<?php
+<?php  //https://themes.getbootstrap.com/product/freshcart-ecommerce-html-template/
 $sql = "SELECT * FROM productos";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
@@ -71,9 +75,8 @@ if ($result->num_rows > 0) {
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary"
 
-                  onclick="shop(<?php echo $row["ID_Producto"]?>,'<?php echo $row["Costo"]?>','cantidad_<?php echo  $row["ID_Producto"] ;?>')"
-  
-                  >Comprar</button>
+                  onclick="shop(<?php echo $row["ID_Producto"]?>,'<?php echo $row["Costo"]?>','cantidad_<?php echo  $row["ID_Producto"] ;?>')">Add kart</button>
+
                   <form name="ejemplo2" action="11-html5-number-input.php" method="POST">
 <input type="number" name="edad" min="1" max="99" step="1"  required="required" id="cantidad_<?php echo  $row["ID_Producto"] ;?>"
     style="width: 50px;
@@ -115,7 +118,12 @@ const emailBody = document.getElementById("emailBody").value;
     $.ajax({
     type: "POST",
     url: "view/shoppingView.php",
-    data: { id_producto:id, cantidad :  document.getElementById(cantidad).value, costo: costo, id_usuario:1},
+    data: { 
+            id_producto:id,
+            cantidad :  document.getElementById(cantidad).value,
+            costo: costo,
+            id_usuario:1
+          },
     beforeSend:function(objeto){
         // $('#loader').modal('show');
     }
@@ -168,12 +176,12 @@ $(document).ajaxStop(function(){
  * ***/
    Email.send({
     Host: "smtp.gmail.com",
-    Username: "myemail@gmail.com",
-    Password: "*******",
-    To: "anotheremail@gmail.com",
-    From: "myemail@gmail.com",
-    Subject: emailSubject,
-    Body: emailBody,
+    Username: "developer.jonathanc@gmail.com",
+    Password: "Domcaliber12)",
+    To: "pur_gatory@hotmail.com",
+    From: "developer.jonathanc@gmail.com",
+    Subject: "emailSubject",
+    Body: "emailBody",
     }).then(
         message => alert("Sent successfully.")
     );

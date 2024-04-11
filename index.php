@@ -73,6 +73,9 @@ if ($result->num_rows > 0) {
                <a class="card-text"><?php echo "$ " . $row["Costo"]. "<br>";?></a>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
+
+                  <button onclick="location.href='http://localhost:8082/eshop/descripcion.php?id_producto=<?php echo $row["ID_Producto"]?>'" >Detalles</button>
+
                   <button type="button" class="btn btn-sm btn-outline-secondary"
 
                   onclick="shop(<?php echo $row["ID_Producto"]?>,'<?php echo $row["Costo"]?>','cantidad_<?php echo  $row["ID_Producto"] ;?>')">Add kart</button>

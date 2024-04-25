@@ -10,13 +10,12 @@ $_SESSION["id_usuario"]=1;
 
 <html lang="en">
 <head>
- <script src="js/jquery-3.3.1.js"></script>
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+ <script src="js/jquery-3.3.1.js"></script> 
 
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1">
-   
-<title>
+  <?php include "UI/navbar.html" ?>
+ <title>
 	eSHOP
 </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -112,10 +111,9 @@ $conn->close();
 </body>
 
 </html>
-<script type="text/javascript" src="https://smtpjs.com/v3/smtp.js"></script>
-<script type="text/javascript"> 
-const emailSubject = document.getElementById("emailSubject").value;
-const emailBody = document.getElementById("emailBody").value;
+<script src="https://smtpjs.com/v3/smtp.js">
+</script>
+ <script type="text/javascript"> 
 
   function shop(id,costo,cantidad) {
     $.ajax({
@@ -148,27 +146,7 @@ $(document).ajaxStop(function(){
   }
 
 
-  function preparar_pedido(id_usuario, subject, message, headers, parameters) {
-    /***RELGA NEGOCIO PREPARANDO pedido incompleto
-     *En este paso se preparan los productos manualmente y puede ser el caso de que algun producto no se encuentre en existencia fisica
-     *  pedido_incompleto(id)
-     * ***/
-
-      /***RELGA NEGOCIO PREPARANDO pedido completo
-     *En este paso se preparan exitosamente los productos manualmente 
-     *El siguiente paso sera enviar_pedido(id_usuario, subject, message, headers, parameters) pero solo hasta que se haya mandado por paqueteria ***/
-   Email.send({
-    Host: "smtp.gmail.com",
-    Username: "myemail@gmail.com",
-    Password: "*******",
-    To: "anotheremail@gmail.com",
-    From: "myemail@gmail.com",
-    Subject: emailSubject,
-    Body: emailBody,
-    }).then(
-        message => alert("Sent successfully.")
-    );
-  }
+ 
 
   function enviar_pedido(id_usuario, subject, message, headers, parameters) {
     /***RELGA NEGOCIO ENVIO LISTO
@@ -178,11 +156,11 @@ $(document).ajaxStop(function(){
  * Se le notifica al usuario de que su pedido esta completo (Numero de guia y eso...)y se cambia el estatus del pedido a enviado 
  * ***/
    Email.send({
-    Host: "smtp.gmail.com",
-    Username: "developer.jonathanc@gmail.com",
-    Password: "Domcaliber12)",
-    To: "pur_gatory@hotmail.com",
-    From: "developer.jonathanc@gmail.com",
+    Host: "xxi-banorte.com",
+    Username: "jcastillo@xxi-banorte.com",
+    Password: "Domcaliber12=",
+    To: "developer.jonathanc@gmail.com",
+    From: "jcastillo@xxi-banorte.com",
     Subject: "emailSubject",
     Body: "emailBody",
     }).then(
@@ -190,46 +168,8 @@ $(document).ajaxStop(function(){
     );
   }
 
-function pedido_incompleto(id) {
-
-/***RELGA NEGOCIO CONTINUAR pedido incompleto
- * Se realiza una devolucion por la cantidad del producto que no se tenia en existencia (Se despliega esto por correo)
- * Se continua el proceso en preparar_pedido(id_usuario, subject, message, headers, parameters) 
- * ***/
-
-/***RELGA NEGOCIO CANCELAR
- * Se manda correo al usuario comentando que X pedido no podra ser completado por X motivo
- * Si el motivo es que no hay existencia de algun producto, se da la opcion de continuar sin ese producto
- * No quiere el envio, se cancelar_pedido(id ) 
- * ***/
-
-  }
 
 
-  function cancelar_pedido(id ) {
-        /***
-         * se cambia el estatus de la venta como cancelada
-         * Se añaden los productos que si estuvieron en existencia a stock 
-         * Se continua este flujo en devoluciones()***/
-    $.ajax({
-    type: "POST",
-    url: "view/shoppingView.php",
-    data: { id_producto:id },
-    beforeSend:function(objeto){
-        // $('#loader').modal('show');
-    }
-    ,
-    success:function(data){
-       
-      
-    },
-    error: function(data){
-    }
-  })
-  .always(function (){
- // $('#loader').modal('hide');
-  });
-
-  }
+  
 
 </script>

@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Descipcion del producto</title>
-</head>
-<body>
 
 <?php 
 include 'utils/connection.php';
@@ -15,6 +9,19 @@ session_start();
 $_SESSION["id_usuario"]=1;
 
 ?>
+
+ <html>
+<head>
+   <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <?php include "UI/navbar.html" ?>
+	<title>Descipcion del producto</title>
+</head>
+<body> 
+ 
+  <hr>
+
+
 
 <?php  //https://themes.getbootstrap.com/product/freshcart-ecommerce-html-template/
 $sql = "SELECT * FROM productos where ID_Producto=".$_GET['id_producto'];

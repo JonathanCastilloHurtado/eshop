@@ -1,26 +1,58 @@
 <?php
 
-$mail_to=(isset($_REQUEST['mail_to']) && $_REQUEST['mail_to']!=null) ? $_REQUEST['mail_to'] : '';
+/*$mail_to=(isset($_REQUEST['mail_to']) && $_REQUEST['mail_to']!=null) ? $_REQUEST['mail_to'] : '';
 $subject=(isset($_REQUEST['subject']) && $_REQUEST['subject']!=null) ? $_REQUEST['subject'] : '';
 $message=(isset($_REQUEST['message']) && $_REQUEST['message']!=null) ? $_REQUEST['message'] : '';
 $headers=(isset($_REQUEST['headers']) && $_REQUEST['headers']!=null) ? $_REQUEST['headers'] : '';
 $parameters=(isset($_REQUEST['parameters']) && $_REQUEST['parameters']!=null) ? $_REQUEST['parameters'] : '';
+*/
+php
+//Import PHPMailer classes into the global namespace
+//These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
-$to = "pur_gatory@hotmail.com";
-$subject = "Asunto del email";
-$headers = "MIME-Version: 1.0" . "\r\n";
-$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
- 
-$message = "
-<html>
-<head>
-<title>HTML</title>
-</head>
-<body>
-<h1>Esto es un H1</h1>
-<p>Esto es un párrafo en HTML</p>
-</body>
-</html>";
- 
-mail($to, $subject, $message, $headers);
+//Load Composer's autoloader
+require 'vendor/autoload.php';
+
+//Create an instance; passing `true` enables exceptions
+$mail = new PHPMailer(true);
+
+try {
+    //Server settings
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+    $mail->isSMTP();                                            //Send using SMTP
+    $mail->Host       = 'smtp.example.com';                     //Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+    $mail->Username   = 'user@example.com';                     //SMTP username
+    $mail->Password   = 'secret';                               //SMTP password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+    //Recipients
+    $mail->setFrom('from@example.com', 'Mailer');
+    $mail->addAddress('joe@example.net', 'Joe User');     //Add a recipient
+   // $mail->addAddress('ellen@example.com');               //Name is optional
+    $mail->addReplyTo('info@example.com', 'Information');
+    $mail->addCC('cc@example.com');
+    $mail->addBCC('bcc@example.com');
+
+    //Attachments
+   // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+    //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+
+    //Content
+    $mail->isHTML(true);                                  //Set email format to HTML
+    $mail->Subject = 'Here is the subject';
+    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+    $mail->send();
+    echo 'Message has been sent';
+} catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
+
+
 ?>

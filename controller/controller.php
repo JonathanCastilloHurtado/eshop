@@ -9,17 +9,17 @@ public function validateShop($id_producto,$stock_comprado,$costo,$id_usuario){
 //Si se coloca afuera a nivel global crashea por que no hay un metodo main
 include '../utils/connection.php';
 
-$sql = "select * from productos where ID_Producto = ".$id_producto;
+$sql = "select * from productos where id_producto = ".$id_producto;
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 	$row = $result->fetch_assoc();
-	$stock_disponible=$row["Cantidad"];
+	$stock_disponible=$row["cantidad"];
 	if($stock_disponible>=$stock_comprado){
 		$this->updateProd($id_producto,$stock_comprado,$stock_disponible,$costo,$id_usuario);
 //echo "OK";
 	}
 else{
-	echo "El articulo ".$row["Nombre"]." no cuenta con piezas suficientes.";
+	echo "El articulo ".$row["nombre"]." no cuenta con piezas suficientes.";
 }
 }
 else{
@@ -34,10 +34,10 @@ include '../utils/connection.php';
 $stock_disponible=$stock_disponible-$stock_comprado;
 
 if($stock_disponible==0){
-$sql = "DELETE FROM productos WHERE ID_Producto=".$id_producto;
+$sql = "DELETE FROM productos WHERE id_producto=".$id_producto;
 }
 else{
-	$sql = "UPDATE productos SET cantidad='".$stock_disponible."' WHERE ID_Producto=".$id_producto;
+	$sql = "UPDATE productos SET cantidad='".$stock_disponible."' WHERE id_producto=".$id_producto;
 }
 
 if ($conn->query($sql) === TRUE) {
@@ -46,7 +46,7 @@ $status=1;//pagado
 $descripcion='listo para empacar';
 $Costo_total=$Costo_unitario*$stock_comprado;
 
-$sql="INSERT INTO ventas (ID_Producto, ID_Usuario, Cantidad,Costo_total,Status,Descripcion)
+$sql="INSERT INTO ventas (id_producto, id_usuario, cantidad,costo_total,status,descripcion)
 VALUES (".$id_producto.",".$id_usuario.",". $stock_comprado.",".$Costo_total.",".$status.",'".$descripcion."')";
 
 if ($conn->query($sql) === TRUE)

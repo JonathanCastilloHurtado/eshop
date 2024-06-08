@@ -24,7 +24,7 @@ $_SESSION["id_usuario"]=1;
 
 
 <?php  //https://themes.getbootstrap.com/product/freshcart-ecommerce-html-template/
-$sql = "SELECT * FROM productos where ID_Producto=".$_GET['id_producto'];
+$sql = "SELECT * FROM productos where id_producto=".$_GET['id_producto'];
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
   // output data of each row
@@ -35,24 +35,24 @@ if ($result->num_rows > 0) {
                 <div class="row gx-4 gx-lg-5 align-items-center">
                     <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..."></div>
                     <div class="col-md-6">
-                        <div class="small mb-1">ID PRODUCTO: <?php echo $row["ID_Producto"]?></div>
-                        <h1 class="display-5 fw-bolder"><?php echo $row["Nombre"]?></h1>
+                        <div class="small mb-1">ID PRODUCTO: <?php echo $row["id_producto"]?></div>
+                        <h1 class="display-5 fw-bolder"><?php echo $row["nombre"]?></h1>
                         <div class="fs-5 mb-5">
-                            <span class="text-decoration-line-through">$ <?php echo $row["Costo"]?></span> 
+                            <span class="text-decoration-line-through">$ <?php echo $row["costo"]?></span> 
                         </div>
-                        <p class="lead"><?php echo $row["Descripcion"]?></p>
+                        <p class="lead"><?php echo $row["descripcion"]?></p>
                         <button type="button" class="btn btn-sm btn-outline-secondary"
 
-                  onclick="shop(<?php echo $row["ID_Producto"]?>,'<?php echo $row["Costo"]?>','cantidad_<?php echo  $row["ID_Producto"] ;?>')">Add kart</button>
+                  onclick="shop(<?php echo $row["id_producto"]?>,'<?php echo $row["costo"]?>','cantidad_<?php echo  $row["id_producto"] ;?>')">Add kart</button>
 
                   <form name="ejemplo2" action="11-html5-number-input.php" method="POST">
-<input type="number" name="edad" min="1" max="99" step="1"  required="required" id="cantidad_<?php echo  $row["ID_Producto"] ;?>"
+<input type="number" name="edad" min="1" max="99" step="1"  required="required" id="cantidad_<?php echo  $row["id_producto"] ;?>"
     style="width: 50px;
     height: 50px;">
      
 </form> 
                 </div>
-                <small class="text-body-secondary"><?php echo "Stock Disponible: " . $row["Cantidad"]. "<br>";?></small>
+                <small class="text-body-secondary"><?php echo "Stock Disponible: " . $row["cantidad"]. "<br>";?></small>
                 </div>
             </div>
         </section>

@@ -1,33 +1,35 @@
-<!DOCTYPE html>
-<html>
-<head>
+<nav class="navbar navbar-expand-md position-md-absolute w-100 border-top border-4 border-primary">
+         <div class="container px-0">
+            <!-- navbar brand -->
+            <a class="navbar-brand" href="../index.html">
+               <img src="imagenes/freshcart-logo.svg" alt="freshcart">
+            </a>
+            <!-- button -->
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
- 
- 	<!-- Image and text -->
-<nav class="navbar bg-light w-100">
-  <div class="container container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="Bootstrap" width="30" height="24">
-    </a>
-  </div>
-  <ul class="nav">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">Active</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled">Disabled</a>
-  </li>
-</ul>
-</nav>
-</head>
-<body>
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="icon-bar top-bar mt-0"></span>
+               <span class="icon-bar middle-bar"></span>
+               <span class="icon-bar bottom-bar"></span>
+            </button>
 
-</body>
-</html>
+            <!-- collapse -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <!-- navbar -->
+               <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-4">
+                  <!-- nav item -->
+                  <li class="nav-item">
+                     <a class="nav-link me-4 border-bottom-0" href="https://freshcart.codescandy.com/docs/index.html" target="_blank">Documentation</a>
+                  </li>
+                  <!-- nav item -->
+                  <li class="nav-item">
+                     <a class="nav-link border-bottom-0" href="https://codescandy.com/contact-us/" target="_blank">Support</a>
+                  </li>
+               </ul>
+               <div>
+                  
+                  <!-- btn -->
+                  <a onclick="location.href='http://localhost:8082/eshop/MyCart.php'" href="https://bit.ly/freshcart" target="_blank" class="btn btn-primary">Carrito de compras</a>
+               </div>
+            </div>
+         </div>
+      </nav>

@@ -25,6 +25,10 @@ $_SESSION["id_usuario"]=1;
 
    <?php include "UI/carouselBanner.html" ?>
    <?php include "UI/arrivals.php" ?>
+
+
+   <?php include "UI/expansion.php" ?>
+   <?php include "UI/expansion.php" ?>
    <?php include "UI/loader.html" ?>
 
 
@@ -46,6 +50,7 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 ?>
+<br>
 <br>
 <button onclick="enviar_pedido()">Realizar envio</button>
 

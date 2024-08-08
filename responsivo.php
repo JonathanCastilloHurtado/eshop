@@ -1,8 +1,15 @@
+<head>
+ <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <title>Eshop</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
 
-
-<div class="container" style="padding: 0px;">
+<div class="container">
 <div class="row">
-    <div class="col-11"><h3 style="color: black;"> <?php echo $expancion; ?> </h3> </div>
+    <div class="col-11"><h3 style="color: black;"> PRUEBA</h3> </div>
     <div class="col-1">
      </div>
 </div>    
@@ -49,9 +56,9 @@ $conn->close();
 
   </div>
 <div class="row">
-    <div class="col-9"> <hr style="color: black; "></div>
-    <div class="col-3" style="    padding-left: 0px;">
- <button class="btn btn-outline-secondary">Ver mas</button>
+    <div class="col-10"> </div>
+    <div class="col-2">
+ <button>Ver mas</button>
     </div>
 </div>   
 

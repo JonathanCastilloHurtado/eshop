@@ -34,15 +34,32 @@ $expancion="YU-Gi-OH!";
 $expancion="POKEMON";
 include "UI/expansion.php" ?>
    
-   <div style="padding-bottom: 5%;">
+   <div style="padding-bottom: 0px;">
      <?php 
 $expancion="MAGIC";
 include "UI/expansion.php" ?>
    <?php include "UI/loader.html" ?>
    </div>
 
+ <div class="container" style="color:black;">
+<h3 style="color: black; padding-top: -15px;">NOTICIAS </h3> 
+   <img src="imagenes/noticia_dummy.png"  style="cursor: pointer;" > 
+  </div>
 
+      <div class="container" style="color:black;">
+
+<div class="row">
+    <div class="col-4"> <hr style="color: black; "></div> 
+    <h3 class="col-4"> Lo mas buscado </h3>   
  
+    <div class="col-4"> <hr style="color: black; "></div>
+    </div> 
+
+<p>Recuerda que puedes consultar las cartas mas buscadas de esta semana en nuestro canal de youtube
+   </p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/L01Coed2qO8?si=_618nw22fNIr5KR3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+ 
+   </div>
 <button onclick="enviar_pedido()">Realizar envio</button>
 
 <button onclick="pedido_incompleto()">Notificar pedido incompleto</button>
@@ -139,6 +156,11 @@ $.ajax({
 
 </script>
 
-<style type="text/css">
+<style type="text/css"> 
+
+    .section-title-bold-center span {
+    border: 2px solid rgba(0, 0, 0, .1);
+    padding: .3em .8em;
+}
   div{ flex: none;overflow-x: hidden;}
 </style>

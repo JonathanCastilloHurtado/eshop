@@ -23,7 +23,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 <?php  
 include 'utils/connection.php'; 
-$sql = "SELECT * FROM productos LIMIT 6";
+echo $sql = "SELECT * FROM productos LIMIT 6";
 $result = $conn->query($sql);
 
 ?>

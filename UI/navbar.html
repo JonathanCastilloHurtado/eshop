@@ -5,8 +5,12 @@
                <img src="imagenes/freshcart-logo.svg" alt="freshcart">
             </a>
             <!-- button -->
-<input type="text" placeholder="Search..">
+<input type="text" placeholder="Search.." class="search_bar">
             <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon" style="
+    width: 16px;
+    height: 16px;
+"></span>
                <span class="icon-bar top-bar mt-0"></span>
                <span class="icon-bar middle-bar"></span>
                <span class="icon-bar bottom-bar"></span>
@@ -33,3 +37,21 @@
             </div>
          </div>
       </nav>
+<style type="text/css">
+   
+@media only screen and (max-width: 600px) {
+   .search_bar {
+    width: 100px;
+
+  }
+
+}
+
+
+@media screen and (min-width: 600px) {
+ .search_bar {
+  width: 100%; 
+  }       
+    
+}
+</style>

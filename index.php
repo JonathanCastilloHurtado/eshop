@@ -138,3 +138,7 @@ $.ajax({
   
 
 </script>
+
+<style type="text/css">
+  div{ flex: none;overflow-x: hidden;}
+</style>

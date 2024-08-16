@@ -3,6 +3,8 @@
 	<title>Mi carrito de compras</title>
 	<meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>Eshop</title>
@@ -45,9 +47,10 @@ if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
    // echo  $row["Cantidad"]. "<br>"; 
-
-    ?>
-                <div class="card mb-3">
+    ?> 
+    <div class="row">
+      <div class="col-10">
+       <div class="card mb-3">
                   <div class="card-body">
                     <div class="d-flex justify-content-between">
                       <div class="d-flex flex-row align-items-center">
@@ -63,17 +66,26 @@ if ($result->num_rows > 0) {
                         </div>
                       </div>
                       <div class="d-flex flex-row align-items-center">
-                        <div style="width: 50px;">
-                          <h5 class="fw-normal mb-0"><?php echo $row["Cantidad"]?></h5>
-                        </div>
-                        <div style="width: 80px;">
+                       
+                          <input max="<?php echo $row["Cantidad"]?>" min="0"   class="form-control" style="width: 60px;height: 50px;" type="number"  value="<?php echo $row["Cantidad"]?>"></input>
+
+                    
+                        <div style="width: 80px; margin-left: 10px;">
                           <h5 class="mb-0">$ <?php echo $row["Costo_total"]?></h5>
                         </div>
-                        <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                        <a href="#!" style="color: #cecece;"></a>
                       </div>
                     </div>
                   </div>
+
                 </div>
+      </div>
+      <div class="col-2">
+      <button type="button" class="btn btn-danger" onclick="drop_item()"><i class="fas fa-trash-alt"></i> </button>
+      </div>
+    </div>
+
+               
 
                
 <?php
@@ -109,3 +121,5 @@ $conn->close();
 
 </body>
 </html>
+
+//TODO PONE REVENTOS A EL INPUT NUMBER Y AL BOTON BORRAR

@@ -22,12 +22,12 @@
     height: 50px;"  value="0" /--> 
     
   <button class="btn btn-primary" type="button"style=" background: #80cffa; color: #fafafa;" class="fa fa-shopping-cart"
-                  onclick="shop(<?php echo $row["id_producto"]?>,'<?php echo $row["costo"]?>','cantidad_<?php echo  $row["id_producto"] ;?>')">AÑADIR AL CARRITO</button> 
+                  onclick="add_kart(<?php echo $row["id_producto"]?>,'<?php echo $row["costo"]?>','1')">AÑADIR AL CARRITO</button> 
   
 
  </div>
 <script type="text/javascript">
-  document.getElementById("cantidad_<?php echo  $row["id_producto"] ;?>").addEventListener("click", function(e) {
+  /*document.getElementById("cantidad_<?php echo  $row["id_producto"] ;?>").addEventListener("click", function(e) {
   const value = this.value,
     max = this.getAttribute("max"),
     min = this.getAttribute("min"),
@@ -41,5 +41,36 @@
   }
   this.dataset.maxed = value === max ? "true" : "false";
   this.dataset.minned = value === min ? "true" : "false";
-})
+})*/
+
+
+  function add_kart(id,costo,cantidad) {
+    $.ajax({
+    type: "POST",
+    url: "view/shoppingView.php",
+    data: { 
+            id_producto:id,
+            cantidad : cantidad,
+            costo: costo,
+            id_usuario:1
+          },
+    beforeSend:function(objeto){
+        // $('#loader').modal('show');
+    }
+    ,
+    success:function(data){
+      alert(data);
+$(document).ajaxStop(function(){
+    window.location.reload();
+});
+     
+     //  $('#loader').modal('hide');      
+    },
+    error: function(data){
+    }
+  })
+  .always(function (){
+ // $('#loader').modal('hide');
+  });
+  }
 </script>

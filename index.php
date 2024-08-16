@@ -43,7 +43,8 @@ include "UI/expansion.php" ?>
 
  <div class="container" style="color:black;">
 <h3 style="color: black; padding-top: -15px;">NOTICIAS </h3> 
-   <img src="imagenes/noticia_dummy.png"  style="cursor: pointer;" > 
+  
+   <?php include "UI/news.php" ?>
   </div>
 
       <div class="container" style="color:black;">

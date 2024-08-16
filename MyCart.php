@@ -3,6 +3,10 @@
 	<title>Mi carrito de compras</title>
 	<meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <title>Eshop</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <?php include "UI/navbar.html" ?>
 </head>
 <body>
@@ -13,20 +17,19 @@ session_start();
 /*session is started if you don't write this line can't use $_Session  global variable*/
 
  	?>
-<H1>Mi carrito de compras</H1>
+   
 
 <!--https://mdbootstrap.com/docs/standard/extended/shopping-carts/-->
-<section class="h-100 h-custom" style="background-color: #eee;">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col">
-        <div class="card">
+<div class="container d-flex justify-content-center" style="padding: 10px;">
+  
+     
+        <div class="card col-lg-7">
           <div class="card-body p-4">
 
             <div class="row">
 
-              <div class="col-lg-7">
-                <h5 class="mb-3"> <u>Muchas gracias por tu compra </u></h5>
+              <div class="col-lg-12"> 
+                <h5 class="mb-3"> <u>¡Ya casi es tuyo! </u></h5>
                 <hr>
  <div class="d-flex justify-content-between align-items-center mb-4">
                   <div>
@@ -101,7 +104,8 @@ $conn->close();
                          
                         </div>
                       </button>
-</section>
+
+</div> 
 
 </body>
 </html>

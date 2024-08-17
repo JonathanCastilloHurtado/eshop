@@ -1,3 +1,4 @@
+<?php error_reporting(E_ERROR | E_PARSE);?>
  <html>
 <head>
 	<title>Mi carrito de compras</title>
@@ -40,7 +41,7 @@ session_start();
                   
                 </div>
 <?php  //https://themes.getbootstrap.com/product/freshcart-ecommerce-html-template/
-  $sql = " SELECT ventas.Cantidad,ventas.Costo_total , productos.Nombre, productos.Descripcion, SUM(Costo_total) OVER () AS TotalAmountPaid, SUM(ventas.Cantidad) OVER() AS CantidadTotal from ventas, Productos where ventas.ID_Usuario=".$_SESSION["id_usuario"]." AND Productos.ID_Producto = ventas.ID_Producto;";
+  $sql = " SELECT productos.id_producto,ventas.Cantidad,ventas.Costo_total , productos.Nombre, productos.Descripcion, SUM(Costo_total) OVER () AS TotalAmountPaid, SUM(ventas.Cantidad) OVER() AS CantidadTotal from ventas, Productos where ventas.ID_Usuario=".$_SESSION["id_usuario"]." AND Productos.ID_Producto = ventas.ID_Producto;";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 	 
@@ -67,7 +68,8 @@ if ($result->num_rows > 0) {
                       </div>
                       <div class="d-flex flex-row align-items-center">
                        
-                          <input max="<?php echo $row["Cantidad"]?>" min="0"   class="form-control" style="width: 60px;height: 50px;" type="number"  value="<?php echo $row["Cantidad"]?>"></input>
+                          <input id="cantidad_<?php echo $row["id_producto"]?>"
+                           max="<?php echo $row["Cantidad"]?>" min="0"   class="form-control" style="width: 60px;height: 50px;" type="number"  value="<?php echo $row["Cantidad"]?>"></input>
 
                     
                         <div style="width: 80px; margin-left: 10px;">
@@ -81,7 +83,7 @@ if ($result->num_rows > 0) {
                 </div>
       </div>
       <div class="col-2">
-      <button type="button" class="btn btn-danger" onclick="drop_item()"><i class="fas fa-trash-alt"></i> </button>
+      <button type="button" class="btn btn-danger"  onclick="supr_shop(<?php echo $row["id_producto"]?>,1, 'cantidad_<?php echo $row["id_producto"]?>')"><i class="fas fa-trash-alt"></i> </button>
       </div>
     </div>
 
@@ -122,4 +124,41 @@ $conn->close();
 </body>
 </html>
 
-//TODO PONE REVENTOS A EL INPUT NUMBER Y AL BOTON BORRAR
+
+<script type="text/javascript" src="https://smtpjs.com/v3/smtp.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">   
+  function supr_shop(id_producto,id_usuario,cantidad) {
+ 
+     $.ajax({
+    type: "POST",
+    url: "view/dropView.php",
+    data: { 
+            id_producto:id_producto,
+            cantidad :document.getElementById(cantidad).value,
+            id_usuario:id_usuario
+          },
+    beforeSend:function(objeto){
+        // $('#loader').modal('show');
+    }
+    ,
+    success:function(data){
+      alert(data);
+$(document).ajaxStop(function(){
+    window.location.reload();
+});
+     
+     //  $('#loader').modal('hide');      
+    },
+    error: function(data){
+    }
+  })
+  .always(function (){
+ // $('#loader').modal('hide');
+  });
+
+  }
+
+</script>
+ 
+ 
